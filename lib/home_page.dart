@@ -8,7 +8,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String displayEx0h = '';
+  List<String> displayEx0h = ['', '', '', '', '', '', '', '', ''];
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +20,15 @@ class _HomePageState extends State<HomePage> {
             SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
-            onTap: _tapped,
+            onTap: () {
+              _tapped(index);
+            },
             child: Container(
               decoration:
                   BoxDecoration(border: Border.all(color: Colors.white70)),
               child: Center(
                 child: Text(
-                  displayEx0h,
+                  displayEx0h[index],
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 30,
@@ -40,9 +42,9 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void _tapped() {
+  void _tapped(int index) {
     setState(() {
-      displayEx0h = 'o';
+      displayEx0h[index] = 'o';
     });
   }
 }
